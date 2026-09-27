@@ -1,0 +1,31 @@
+name: Build Sound Set
+
+# Run manually from the Actions tab. Downloads the open-source guitar recordings,
+# imports + analyses them and publishes DaliGTR-SoundSet.zip as release "soundset-v1".
+on:
+  workflow_dispatch:
+
+jobs:
+  soundset:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: pip install numpy soundfile
+      - name: Inspect all sources (mapping report)
+        run: python tools/soundset/build_soundset.py --sources tools/soundset/sources.json --inspect soundset-report.md
+      - name: Build Sound Set
+        run: python tools/soundset/build_soundset.py --sources tools/soundset/sources.json --out build/SoundSet --zip DaliGTR-SoundSet.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: soundset-report
+          path: soundset-report.md
+      - name: Publish release soundset-v1
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: soundset-v1
+          name: DaliGTR Sound Set v1
+          body: Guitar recordings for DaliGTR (Karoryfer Samples, CC0). Downloaded automatically by the plugin on first run.
+          files: DaliGTR-SoundSet.zip
