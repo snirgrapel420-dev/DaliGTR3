@@ -1,0 +1,25 @@
+{
+  "soundset_version": 1,
+  "guitars": [
+    {
+      "id": "sg", "name": "SG", "enabled": true,
+      "repo": "https://github.com/sfzinstruments/karoryfer.emilyguitar.git",
+      "sfz": "emily_basic.sfz",
+      "noise": "^noises/",
+      "release_sec": 0.1,
+      "credit": "Karoryfer Samples - Emilyguitar (CC0)"
+    },
+    {
+      "id": "hollow", "name": "Gretsch / Hofner", "enabled": false,
+      "repo": "https://github.com/sfzinstruments/karoryfer.black-and-green-guitars.git",
+      "sfz": null,
+      "credit": "Karoryfer Samples - Black And Green Guitars (CC0)"
+    },
+    {
+      "id": "archtop", "name": "Archtop", "enabled": false,
+      "repo": "https://github.com/sfzinstruments/karoryfer.shinyguitar.git",
+      "sfz": null,
+      "credit": "Karoryfer Samples - Shinyguitar (CC0)"
+    }
+  ]
+}
